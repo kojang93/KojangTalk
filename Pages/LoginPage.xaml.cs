@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,19 +18,19 @@ using System.Windows.Shapes;
 
 namespace KojangTalk
 {
-    /// <summary>
-    /// LoginPage.xaml에 대한 상호 작용 논리
-    /// </summary>
-    public partial class LoginPage : BasePage
+    
+
+    public partial class LoginPage : BasePage<LoginViewModel>, IHavePassword //LoginViewModel을 BasePage에서 관리하는 이유는 무엇인가?
+        //IHavePassword 인터페이스 구현 
     {
         public LoginPage()
         {
             InitializeComponent();
+
+          
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-         
-        }
+        public SecureString SecurePassword => PasswordText.SecurePassword;
+     
     }
 }

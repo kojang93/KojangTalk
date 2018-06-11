@@ -38,4 +38,21 @@
     <Color x:Key="BackgroundGreenLight">#5AA064</Color>
     <SolidColorBrush x:Key="BackgroundGreenLightBrush" Color="{StaticResource BackgroundGreenLight}"/>
 
+
+    <!--Green-->
+    
+    <Color x:Key="VeryLightGreen">#CDF6B2</Color>
+    <SolidColorBrush x:Key="VeryLightGreenBrush" Color="{StaticResource VeryLightGreen}"/>
+
+
+    <Color x:Key="GreenOne">#80B740</Color>
+    <SolidColorBrush x:Key="GreenOneBrush" Color="{StaticResource GreenOne}"/>
+
+    <Color x:Key="GreenTwo">#388342</Color>
+    <SolidColorBrush x:Key="GreenTwoBrush" Color="{StaticResource GreenTwo}"/>
+
+    <Color x:Key="GreenThree">#274B1D</Color>
+    <SolidColorBrush x:Key="GreenThreeBrush" Color="{StaticResource GreenThree}"/>
+
+
 </ResourceDictionary>

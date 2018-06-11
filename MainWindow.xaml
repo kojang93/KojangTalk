@@ -85,17 +85,17 @@
 
                                                 <TextBlock FontFamily="{StaticResource LatoBold}" FontSize="{StaticResource FontSizeRegular}" Margin="0,0,0,-5">
                                                     
-                                                    <Run Text="K" Foreground="{StaticResource WordOrangeBrush}"/>
-                                                    <Run Text="O" Foreground="{StaticResource WordBlueBrush}"/>
-                                                    <Run Text="J" Foreground="{StaticResource WordRedBrush}"/>
-                                                    <Run Text="A" Foreground="{StaticResource WordGreenBrush}"/>
-                                                    <Run Text="N" Foreground="{StaticResource WordOrangeBrush}"/>
-                                                    <Run Text="G" Foreground="{StaticResource WordGreenBrush}"/>
+                                                    <Run Text="K" Foreground="Black"/>
+                                                    <Run Text="O" Foreground="Black"/>
+                                                    <Run Text="J" Foreground="Black"/>
+                                                    <Run Text="A" Foreground="Black"/>
+                                                    <Run Text="N" Foreground="Black"/>
+                                                    <Run Text="G" Foreground="Black"/>
                                                     
                                                 </TextBlock>
 
 
-                                                <TextBlock Text="by kokjang" Foreground="{StaticResource ForegroundDarkBrush}" TextAlignment="Center"/>
+                                                <TextBlock Text="by kojang" Foreground="{StaticResource ForegroundDarkBrush}" TextAlignment="Center"/>
 
 
                                             </StackPanel>
@@ -162,7 +162,23 @@
     </WindowChrome.WindowChrome>
 
     <Grid Background="{StaticResource BackgroundLightBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width ="300"/>
+            <ColumnDefinition Width ="*"/>
+
+
+        </Grid.ColumnDefinitions>
+        
+        
+        
         <Frame x:Name="Mainframe" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>
+
+        <!--Main Bacground-->
+
+        <local:SideMenuControl>
+            <local:ChatListControl/>
+        </local:SideMenuControl>
+
     </Grid>
    
 </Window>

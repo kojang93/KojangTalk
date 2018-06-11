@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace KojangTalk
 {
+
+    //페이지마다 enum으로 정의하고 enum의 값에 따라 컨버트를 따로해서 불러온다. 
     class ApplicationPageValueConverter : BaseValueConverter<ApplicationPageValueConverter>
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -17,6 +19,9 @@ namespace KojangTalk
             {
                 case ApplicationPage.Login:
                     return new LoginPage();
+
+                case ApplicationPage.Chat:
+                    return new ChatPage();
 
                 default:
                     Debugger.Break();

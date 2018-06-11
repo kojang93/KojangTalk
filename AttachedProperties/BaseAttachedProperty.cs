@@ -31,10 +31,10 @@ namespace KojangTalk
         public static readonly DependencyProperty ValueProperty = DependencyProperty.RegisterAttached("Value", typeof(Property), typeof(BaseAttachedProperty<Parent, Property>),
        new PropertyMetadata(new PropertyChangedCallback(OnValuePropertyChanged))); //ValueProperty, 의존속성의 변화가 일어날때 OnValuePropertyChanged 호출
 
-
+         
         //왜 부모 클래스에서 자식클래스 인스턴스 만들어서 하는 것인가?
 
-            //d에는 예를들면 passwordbox 가 오지 
+            //d에는 예를들면 passwordbox 가 오지  
 
             //처음 초기화 될때 한번 호출됨
         private static void OnValuePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) //프로퍼티 변화가 일어났을때 자식놈의 instance 함수 호추 ㄹ

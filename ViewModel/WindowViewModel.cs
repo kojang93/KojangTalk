@@ -49,7 +49,7 @@ namespace KojangTalk
 
         #region Public Properties
 
-        public double WindowMinimumWidth { get; set; } = 400;
+        public double WindowMinimumWidth { get; set; } = 800;
         public double WindowMaximumHeight { get; set; } = 400;
 
         public string Test { get; set; } = "My string";
@@ -150,7 +150,8 @@ namespace KojangTalk
         }
 
 
-        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
+        //현재 페이지 상태 프로퍼티 
+        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Chat;
 
 
     }

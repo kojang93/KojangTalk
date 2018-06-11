@@ -23,3 +23,11 @@ C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\obj\
 C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\obj\Debug\Pages\LoginPage.g.cs
 C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\obj\Debug\Pages\LoginPage.baml
+C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\obj\Debug\Pages\ChatPage.g.cs
+C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\obj\Debug\Pages\ChatPage.baml
+C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\obj\Debug\Controls\SideMenuControl.g.cs
+C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\obj\Debug\Controls\SideMenuControl.baml
+C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\obj\Debug\Controls\Chat\ChatListControl.g.cs
+C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\obj\Debug\Controls\Chat\ChatListItemControl.g.cs
+C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\obj\Debug\Controls\Chat\ChatListControl.baml
+C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\obj\Debug\Controls\Chat\ChatListItemControl.baml

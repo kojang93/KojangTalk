@@ -8,6 +8,7 @@
      
         <ResourceDictionary Source="Colors.xaml" />
         <ResourceDictionary Source="Fonts.xaml" />
+        <ResourceDictionary Source="Texts.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
   
@@ -82,7 +83,7 @@
 
     </Style>
 
-    <!-- Regular button -->
+    <!-- 일반 버튼 -->
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
 
         <Setter Property="Background" Value="{StaticResource WordOrangeBrush}" />
@@ -93,6 +94,8 @@
         <Setter Property="Padding" Value="50 10" />
         <Setter Property="Margin" Value="0 10" />
 
+        <Setter Property="local:IsBusyProperty.Value" Value="False" />
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ButtonBase}">
@@ -102,18 +105,26 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Background="{TemplateBinding Background}" 
                             SnapsToDevicePixels="True">
-                        <TextBlock Text="{TemplateBinding Content}" 
+                        <Grid>
+                            <TextBlock Text="{TemplateBinding Content}" 
+                                   Visibility="{TemplateBinding local:IsBusyProperty.Value, Converter={local:BooleanToVisibilityConverter}}"
                                    Focusable="False" 
                                    FontFamily="{TemplateBinding FontFamily}"
                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                                    Margin="{TemplateBinding Padding}" 
                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
+                            <TextBlock  
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   Visibility="{TemplateBinding local:IsBusyProperty.Value, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
+                                   Text="Sex"
+                                />
+
+                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
-                        
-                        
-                        
                         <EventTrigger RoutedEvent="MouseEnter">
                             <BeginStoryboard>
                                 <Storyboard>
@@ -121,9 +132,6 @@
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
-                        
-                        
-                        
                         <EventTrigger RoutedEvent="MouseLeave">
                             <BeginStoryboard>
                                 <Storyboard>
@@ -131,16 +139,9 @@
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
-                        
-                        
-                       
-                        <!--<Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource WordBlueBrush}"/>
-                        </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Background" TargetName="border" Value="{StaticResource ForegroundDarkBrush}"/>
-                        </Trigger>-->
-                        
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -148,7 +149,7 @@
     </Style>
 
 
-    <!-- Text button -->
+    <!-- 텍스트 버튼-->
     <Style x:Key="TextButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
 
         <Setter Property="Background" Value="Transparent" />
@@ -182,6 +183,100 @@
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Foreground" Value="{StaticResource ForegroundDarkBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- 아이콘 버튼 -->
+    
+    
+    
+    
+    <Style x:Key="IconButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
+
+        <Setter Property="Background" Value="{StaticResource GreenTwoBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}" />
+        <Setter Property="FontFamily" Value="{StaticResource FontAwesome}" />
+        <Setter Property="Padding" Value="30" />
+        <Setter Property="Margin" Value="0" />
+
+        <Setter Property="Width" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" />
+
+        
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <!-- 버튼을 타깃으로 하는 컨트롤 템플릿을 정의 한다. -->
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
+                    
+                               
+                    <Border x:Name="border"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}" 
+                            SnapsToDevicePixels="True">
+                        <!-- SnpasToDevicePixels은 -->
+                        
+                        <Grid>
+                            
+                            <!-- 텍스트 블럭 정의   -->
+
+
+                            <!-- 템플릿 타깃의 값들을 사용함-->
+                            <Viewbox>
+                                <TextBlock Text="{TemplateBinding Content}" 
+                                       Focusable="False" 
+                                       FontFamily="{TemplateBinding FontFamily}"
+                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                       Margin="{TemplateBinding Padding}" 
+                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Viewbox>
+                        </Grid>
+                        
+                    </Border>
+                    
+                    
+                    <!-- 템플릿에 적용할 트리거를 정의한다. -->
+                    <ControlTemplate.Triggers>
+                        
+                        <!--마우스가 들어왔을때 발동하는 트리거-->
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            
+                            <!-- 스토리보드는 어떤 애니메이션의 흐름을 나타낸다. -->
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    
+                                    <!--시간 경과에 따라 색깔을 변할수 있도록 하는 -->
+                                    <ColorAnimation To="{StaticResource GreenOne}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        
+                        
+                        <!--마우스가 나갈때 발동하는 트리거-->
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            
+                            <BeginStoryboard>
+                                
+                                <Storyboard>
+                                    <ColorAnimation To="{StaticResource GreenTwo}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
+                               
+                                
+                                   
+                                </Storyboard>
+                                
+                        
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource ForegroundDarkBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
