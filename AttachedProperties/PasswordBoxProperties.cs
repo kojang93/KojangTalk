@@ -11,6 +11,9 @@
 //    class PasswordBoxProperties
 //    {
 
+
+
+//이것은 Attached Property 사용하지 않았을때
         
 
 //        public static readonly DependencyProperty MonitorPasswordProperty =

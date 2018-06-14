@@ -27,26 +27,30 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Window}">
                         
-                        <Border Padding="{Binding OuterMarginSizeThickness, FallbackValue=10}">
+                        <Border Margin="{Binding OuterMarginSizeThickness, FallbackValue=10}">
                             
                             <Grid>
 
 
                                 <Border x:Name="Container"
                                         Background="{StaticResource BackgroundLightBrush}"
+                                        
                                         CornerRadius="{Binding WindowCornerRadius, FallbackValue=10}"/>
 
 
-                                <!--Window border and dropshadown-->
                                 <Border CornerRadius="{Binding WindowCornerRadius}"
                                       Background="{Binding ForegroundLightBrush, FallbackValue=White}">
+                                    
                                     <Border.Effect>
                                         <DropShadowEffect ShadowDepth="0" Opacity="0.2" />
                                     </Border.Effect>
+                                    
                                 </Border>
 
 
-                                <!--main window content-->
+                                  
+                                
+                                <!--타이틀바 나타내는 Grid-->
                                 <Grid>
 
                                     <Grid.OpacityMask>
@@ -64,7 +68,11 @@
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
 
+                                    
+                                    <!--row 1에 해당하는 타이틀바 부분-->
                                     <Grid Grid.Column="0" Panel.ZIndex="1">
+                                        
+                                        <!--3개의 칼럼으로나윔 아이콘, 어플리케이션이름 그리고 창 최소화, 최대화, 어플 종료 -->
                                         <Grid.ColumnDefinitions>
 
                                             <ColumnDefinition Width="Auto"/>
@@ -117,11 +125,14 @@
                                         </StackPanel>
 
                                     </Grid>
+                                    
+                                    
+                                    
 
-                                    <!--Drop Shadow-->
+                                    <!--그림자-->
 
                                     <Border Grid.Row="1" Height="6" BorderThickness="0 0.2 0 0">
-                                        <!--Underline-->
+                                      
                                         <Border.BorderBrush>
 
                                             <LinearGradientBrush StartPoint="0,0" EndPoint="1, 0">
@@ -136,8 +147,8 @@
                                        
                                     </Border>
                                     
-                                    <!--Page Content-->
-                                    <Border Grid.Row="2" Padding="{Binding InnerContentPadding}">
+                               
+                                    <Border Grid.Row="2" Padding="{Binding InnerContentPadding}" ClipToBounds="True">
 
                                      
                                         <ContentPresenter Content="{TemplateBinding Content}" />
@@ -167,16 +178,24 @@
             />
     </WindowChrome.WindowChrome>
 
+    
+    
+   <!--전체화면의 두번째 로우에 해당하는 그리그-->
+  
+    
     <Grid Background="{StaticResource BackgroundLightBrush}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width ="300"/>
+            
+            
+            <!--두개의 칼럼 정의 첫번째는 사이드 메뉴, 두번째는 메인프레임 -->
+            <ColumnDefinition Width ="auto"/>
             <ColumnDefinition Width ="*"/>
 
 
         </Grid.ColumnDefinitions>
 
 
-
+<!--메인 페이지 나타내주는 부분-->
         <Frame Grid.Column="1" 
                    x:Name="MainFrame" 
                    Content="{Binding ApplicationViewModel.CurrentPage, 
@@ -184,10 +203,19 @@
                                      Converter={local:ApplicationPageValueConverter}}"
                    Background="Transparent" />
 
-        <!--Main Bacground-->
+        <!--왼쪽 사이드 메뉴 -->
 
-        <local:SideMenuControl>
-            <local:ChatListControl/>
+        
+        <!-- Attaced Property 추가 초기값은 False-->
+        <!--사용자 정의 컨트롤 -->
+        <local:SideMenuControl 
+                Width="300" 
+            
+                local:AnimateSlideInFromLeftProperty.Value="{Binding ApplicationViewModel.SideMenuVisible, 
+                                     Source={x:Static local:ViewModelLocator.Instance}}">
+
+            <local:ChatListControl />
+
         </local:SideMenuControl>
 
     </Grid>

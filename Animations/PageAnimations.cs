@@ -18,7 +18,7 @@ namespace KojangTalk
        
             public static async Task SlideAndFadeInFromRight(this Page page, float seconds)
             {
-
+                
               
                 var sb = new Storyboard();    
             
@@ -45,7 +45,7 @@ namespace KojangTalk
                 var sb = new Storyboard();
 
               
-                sb.AddSlideToLeft(seconds, page.WindowWidth);
+               //sb.AddSlideToLeft(seconds, page.WindowWidth);
 
               
                 sb.AddFadeOut(seconds); //흐려지지 않는 함수 

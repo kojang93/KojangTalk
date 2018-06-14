@@ -31,22 +31,22 @@ namespace KojangTalk
         #endregion
 
         #region
-        public ICommand MinimizeCommand { get; set; }
+        public ICommand MinimizeCommand { get; set; } //창 최소화할때 커맨드
 
 
         public ICommand MaximizeCommand { get; set; }
 
         public ICommand CloseCommand { get; set; }
 
-        public ICommand MenuCommand { get; set; }
+        public ICommand MenuCommand { get; set; }  
 
         #endregion
 
 
         #region Public Properties
 
-        public double WindowMinimumWidth { get; set; } = 800;
-        public double WindowMaximumHeight { get; set; } = 400;
+        public double WindowMinimumWidth { get; set; } = 800;    //창의 최소 너비 정의 
+        public double WindowMaximumHeight { get; set; } = 400;    //창의 최대 높이 정의 
 
         public string Test { get; set; } = "My string";
         public int ResizeBorder { get; set; } = 6;
@@ -110,6 +110,7 @@ namespace KojangTalk
         {
             mWindow = window;
             // 윈도우 리사이즈 감지 
+
 
             mWindow.StateChanged += (sedner, e) =>
              {

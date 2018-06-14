@@ -8,18 +8,27 @@ using System.Windows.Media.Animation;
 
 namespace KojangTalk
 {
-
+    //스토리보드에 확장함수 추가해주는 함수 
 
     public static class StoryboardHelpers //애니메이션 함수들 관리하는 곳
     {
-        public static void AddSlideFromRight(this Storyboard storyboard, float seconds, double offset, float decelerationRatio = 0.9f)
+
+        //오른쪽에서 튀어나옴
+        /// <summary>
+        /// /
+        /// </summary>
+        /// <param name="storyboard"></param>  애니메이션을 추가할 스토리보드 
+        /// <param name="seconds"></param>  애니메이션 지속되는 시간
+        /// <param name="offset"></param> 이동거리 
+        /// <param name="decelerationRatio"></param>  속도 감소율
+        public static void AddSlideFromRight(this Storyboard storyboard, float seconds, double offset, bool keepMargin= true, float decelerationRatio = 0.9f)
         {
           
             var animation = new ThicknessAnimation  //굵기 애니메이션 
             {
-                Duration = new Duration(TimeSpan.FromSeconds(seconds)),  //애니메이션 구동시간 
-                From = new Thickness(offset, 0, -offset, 0), //두께 시작점
-                To = new Thickness(0),                 //두께 최종
+                Duration = new Duration(TimeSpan.FromSeconds(seconds)),
+                From = new Thickness(keepMargin ? offset : 0, 0, -offset, 0),
+                To = new Thickness(0),
                 DecelerationRatio = decelerationRatio
             };
 
@@ -28,19 +37,22 @@ namespace KojangTalk
 
           
             storyboard.Children.Add(animation);
+
+
+
         }
 
      
 
-         
-        public static void AddSlideToLeft(this Storyboard storyboard, float seconds, double offset, float decelerationRatio = 0.9f)
+         //왼쪽에서 튀어나옴
+        public static void AddSlideFromLeft(this Storyboard storyboard, float seconds, double offset,  bool keepMargin = true, float decelerationRatio = 0.9f)
         {
           
             var animation = new ThicknessAnimation
             {
                 Duration = new Duration(TimeSpan.FromSeconds(seconds)),
-                From = new Thickness(0),
-                To = new Thickness(-offset, 0, offset, 0),
+                From = new Thickness(-offset, 0, keepMargin ? offset : 0, 0),
+                To = new Thickness(0),
                 DecelerationRatio = decelerationRatio
             };
 
@@ -51,7 +63,50 @@ namespace KojangTalk
             storyboard.Children.Add(animation);
         }
 
-    
+       //오른쪽으로 들어감
+        public static void AddSlideToRight(this Storyboard storyboard, float seconds, double offset, bool keepMargin, float decelerationRatio = 0.9f)
+        {
+
+            var animation = new ThicknessAnimation
+            {
+                Duration = new Duration(TimeSpan.FromSeconds(seconds)),
+                From = new Thickness(0),
+                To = new Thickness(keepMargin ? offset : 0, 0, -offset, 0),
+                DecelerationRatio = decelerationRatio
+            };
+
+
+            Storyboard.SetTargetProperty(animation, new PropertyPath("Margin"));
+
+
+            storyboard.Children.Add(animation);
+        }
+
+        //왼쪽으로 들어감  
+        public static void AddSlideToLeft(this Storyboard storyboard, float seconds, double offset, bool keepMargin, float decelerationRatio = 0.9f)
+        {
+
+            var animation = new ThicknessAnimation
+            {
+                Duration = new Duration(TimeSpan.FromSeconds(seconds)),
+                From = new Thickness(0),
+                To = new Thickness(-offset, 0, keepMargin ? offset : 0, 0),
+                DecelerationRatio = decelerationRatio
+            };
+
+
+            Storyboard.SetTargetProperty(animation, new PropertyPath("Margin"));
+
+
+            storyboard.Children.Add(animation);
+        }
+
+
+        /// <summary>
+     
+        /// </summary>
+        /// <param name="storyboard"></param>
+        /// <param name="seconds"></param>
         public static void AddFadeIn(this Storyboard storyboard, float seconds)
         {
          
