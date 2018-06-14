@@ -31,3 +31,11 @@ C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\obj\
 C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\obj\Debug\Controls\Chat\ChatListItemControl.g.cs
 C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\obj\Debug\Controls\Chat\ChatListControl.baml
 C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\obj\Debug\Controls\Chat\ChatListItemControl.baml
+C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\obj\Debug\Pages\RegisterPage.g.cs
+C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\obj\Debug\Pages\RegisterPage.baml
+C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\bin\Debug\KojangTalk.Core.dll
+C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\bin\Debug\KojangTalk.Core.pdb
+C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\bin\Debug\Ninject.dll
+C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\bin\Debug\Ninject.xml
+C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\bin\Debug\PropertyChanged.dll
+C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\bin\Debug\PropertyChanged.xml

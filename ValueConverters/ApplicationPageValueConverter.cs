@@ -1,4 +1,5 @@
 ﻿
+using KojangTalk.Core;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,10 +16,15 @@ namespace KojangTalk
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            Console.WriteLine("ApplicationPageValueConverter");
+     
            switch ((ApplicationPage)value)
             {
                 case ApplicationPage.Login:
                     return new LoginPage();
+
+                case ApplicationPage.Register:
+                    return new RegisterPage();
 
                 case ApplicationPage.Chat:
                     return new ChatPage();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KojangTalk.Core;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,18 @@ namespace KojangTalk
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            
+            base.OnStartup(e);
+            Console.WriteLine("OnStartup");
+            IoC.Setup();
+
+            Current.MainWindow = new MainWindow();
+            Current.MainWindow.Show();
+
+        }
+      
+        
     }
 }

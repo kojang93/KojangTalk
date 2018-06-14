@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KojangTalk"
+        xmlns:core="clr-namespace:KojangTalk.Core;assembly=KojangTalk.Core"
+        
+        
         mc:Ignorable="d"
         WindowStyle="None"
+        
         WindowStartupLocation="CenterScreen"
         x:Name="AppWindow"
         AllowsTransparency="True"
@@ -14,6 +18,8 @@
         MinHeight="{Binding WindowMaximumHeight}"
         Title="Kojang Talk" Height="600" Width="900">
 
+    
+    <!--Main Window ViewModel이랑 연결되어 있음-->
     <Window.Resources>
 
         <Style TargetType="{x:Type local:MainWindow}">
@@ -168,10 +174,15 @@
 
 
         </Grid.ColumnDefinitions>
-        
-        
-        
-        <Frame x:Name="Mainframe" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>
+
+
+
+        <Frame Grid.Column="1" 
+                   x:Name="MainFrame" 
+                   Content="{Binding ApplicationViewModel.CurrentPage, 
+                                     Source={x:Static local:ViewModelLocator.Instance},  
+                                     Converter={local:ApplicationPageValueConverter}}"
+                   Background="Transparent" />
 
         <!--Main Bacground-->
 

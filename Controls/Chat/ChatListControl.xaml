@@ -3,7 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             
              xmlns:local="clr-namespace:KojangTalk"
+             xmlns:core="clr-namespace:KojangTalk.Core;assembly=KojangTalk.Core"
+             
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
@@ -11,7 +14,7 @@
     
     
     <!-- 싱글턴 인스턴스를 데이터 컨텍스트로 지정하엿다. -->
-    <Grid DataContext="{x:Static local:ChatListDesignModel.Instance}" Background="{StaticResource ForegroundLightBrush}">
+    <Grid DataContext="{x:Static core:ChatListDesignModel.Instance}" Background="{StaticResource ForegroundLightBrush}">
      
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             

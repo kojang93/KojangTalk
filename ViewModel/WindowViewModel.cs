@@ -1,4 +1,5 @@
 ﻿
+using KojangTalk.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +15,7 @@ namespace KojangTalk
     class WindowViewModel : BaseViewModel
     {
 
-
-
-
         #region Private Member
-
-
 
         private Window mWindow;
 
@@ -65,7 +61,6 @@ namespace KojangTalk
 
 
         public Thickness InnerContentPadding { get; set; } = new Thickness(0);
-
 
 
         public int OuterMarginSize
@@ -139,7 +134,6 @@ namespace KojangTalk
 
         #endregion
 
-    
        
         private  Point GetMousePosition()
         {
@@ -149,9 +143,9 @@ namespace KojangTalk
             return new Point(position.X + mWindow.Left, position.Y + mWindow.Top);
         }
 
-
         //현재 페이지 상태 프로퍼티 
-        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Chat;
+        //현재 페이지 상태를 외부에서 변경하기 위해서 어떻게 할것인가?
+        //Dependency injection 사용할꺼임
 
 
     }

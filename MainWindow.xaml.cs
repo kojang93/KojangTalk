@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KojangTalk.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,10 @@ namespace KojangTalk
     /// </summary>
     public partial class MainWindow : Window
     {
+        //전체 어플리케이션을 관장하는 ApplicationViewModel을 생성한다. 
+      
+
+
         public MainWindow()
         {
             InitializeComponent();

@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("styles/fonts.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("fodyweavers.xml")]
 
 
