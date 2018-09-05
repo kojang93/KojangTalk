@@ -1,10 +1,6 @@
 ﻿using KojangTalk.Core;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+
 using System.Windows;
 
 namespace KojangTalk
@@ -18,12 +14,20 @@ namespace KojangTalk
         {
             
             base.OnStartup(e);
-            Console.WriteLine("OnStartup");
-            IoC.Setup();
+           
+
+            ApplicationSetup();
+           
 
             Current.MainWindow = new MainWindow();
             Current.MainWindow.Show();
 
+        }
+
+        private void ApplicationSetup()
+        {
+            IoC.Setup();
+            IoC.Kernel.Bind<IUIManager>().ToConstant(new UIManager());
         }
       
         

@@ -1,4 +1,4 @@
-﻿<local:BasePage x:TypeArguments="core:LoginViewModel" x:Class="KojangTalk.ChatPage"
+﻿<local:BasePage x:TypeArguments="core:ChatMessageListViewModel" x:Class="KojangTalk.ChatPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,10 +8,218 @@
       xmlns:core="clr-namespace:KojangTalk.Core;assembly=KojangTalk.Core"
                 
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="ChatPage">
+      d:DesignHeight="700" d:DesignWidth="700"
+      >
 
     <Grid>
+
+        <Grid.RowDefinitions>
+
+          
+            <RowDefinition Height="Auto" />
+
+          
+            <RowDefinition Height="*" />
+
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--팝업메뉴 나타날때 뒤에  border 나오게 할것인지 안나오게 할 것인지 설정하는것 -->
+        <Border Background="Transparent" 
+                Grid.RowSpan="2"
+                Panel.ZIndex="1"
+                Visibility="{Binding AnyPopupVisible, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
+                >
+            <Border.InputBindings>
+                <MouseBinding MouseAction="LeftClick" Command="{Binding PopupClickawayCommand}" />
+            </Border.InputBindings>
+        </Border>
+
+
+        <Grid Height="50" Background="{StaticResource GreenTwoBrush}">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+
+            </Grid.ColumnDefinitions>
+
+         
+            <TextBlock Text="{Binding DisplayTitle}" 
+                       Grid.ColumnSpan="2"
+                   
+                       Foreground="{StaticResource ForegroundLightBrush}"
+                       FontSize="{StaticResource FontSizeXLarge}"
+                       FontFamily="{StaticResource LatoRegular}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       />
+
         
+            <StackPanel Orientation="Horizontal" Grid.Column="1">
+                <Button Style="{StaticResource IconGrowButton}" 
+                        Content="{StaticResource FontAwesomeSearchIcon}" 
+                        Command="{Binding OpenSearchCommand}"
+                        
+                        />
+                <Button Style="{StaticResource IconGrowButton}" Content="{StaticResource FontAwesomeEllipsisVerticalIcon}" />
+            </StackPanel>
+
+            
+            
+            <!--Search 겹쳐져있음 attachedproperty 붙여서 애니메이션 할꺼임 
+            -->
+            <Grid Grid.ColumnSpan="1"
+                  local:AnimateSlideInFromRightMarginProperty.Value="{Binding SearchIsOpen}"
+                  >
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+
+                </Grid.ColumnDefinitions>
+
+               
+                <!--Search 닫기 버튼-->
+                <Button Style="{StaticResource IconGrowButton}"
+                        Content="{StaticResource FontAwesomeCloseIcon}"
+                        Command="{Binding CloseSearchCommand}"
+                        
+                        />
+                
+                 <!--Search box-->
+                <TextBox 
+                    Grid.Column="2" 
+                    Tag="Search text...."
+                    local:FocusProperty.Value ="{Binding SearchIsOpen}"                                       
+                    Text="{Binding SearchText}"
+                    Style="{StaticResource TextBoxBase}"
+                    FontSize="{StaticResource FontSizeRegular}"                  
+                    >
+                    
+                    <TextBox.InputBindings>
+                        <KeyBinding Command="{Binding ClearSearchCommand}" Key="Esc"/>
+                        <KeyBinding Command="{Binding SearchCommand}" Key="Return"/>
+                    </TextBox.InputBindings>
+                    
+                </TextBox>
+            </Grid>
+            
+            
+        </Grid>
+
+        <!--채팅 메시지 나열해주는 부분-->
+        <local:ChatMessageListControl 
+            x:Name="ChatMessageList"
+            Grid.Row="1" 
+            DataContext="{Binding}" />
+    
+        <!-- 파일 첨부 눌렀을때 생겼다가 없어졌다가 하는부분-->
+        
+        
+        <!-- ViewModel.AttachmentMenuVisible 주의 할것 -->
+        
+        <!-- DataContext="{Binding AttachmentMenu는 여기서 BubbleContet의 DataContext에 ChatMessageListIViewModel에 있는 AttachmentMenu를 Binding 한다. AttachmentMenu 에는 BubbleContent가 사용하는 배경 등의 데이터 정의-->
+        <Border
+              Grid.Row="1" 
+            Panel.ZIndex="2"
+               VerticalAlignment="Bottom" 
+            HorizontalAlignment="Left"
+            local:AnimateSlideInFromBottomProperty.Value="{Binding AttachmentMenuVisible}">
+          
+            <local:BubbleContent DataContext="{Binding AttachmentMenu}"/>
+
+
+        </Border>
+        
+          
+           
+         
+          
+          
+         
+
+
+        <Grid Grid.Row="2" 
+              Panel.ZIndex="3"
+              MinHeight="50"
+              MaxHeight="114"
+              Background="{StaticResource ForegroundLightBrush}"
+              >
+
+            <Grid.ColumnDefinitions>
+              
+                <ColumnDefinition Width="Auto" />
+
+              
+                <ColumnDefinition Width="*" />
+  
+                
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+         
+            <!--파일 첨부 버튼-->
+            <Button Style="{StaticResource IconGrowButton}"
+                    Height="{Binding MinHeight, RelativeSource={RelativeSource AncestorType=Grid}}"
+                    Content="{StaticResource FontAwesomePaperclipIcon}"
+                    VerticalAlignment="Top"
+                    Foreground="{StaticResource ForegroundDarkBrush}"                 
+                    Command="{Binding AttachmentButtonCommand}" 
+                  
+                    />
+
+          
+            <TextBox 
+                    local:IsFocusedProperty.Value ="True"
+                     x:Name="MessageText"   
+                     Grid.Column="1" 
+                     Tag="Write a message..."
+                     Text="{Binding PendingMessageText, UpdateSourceTrigger=PropertyChanged}"
+                     Style="{StaticResource TextBoxBase}"
+                     FontSize="{StaticResource FontSizeRegular}"
+                     VerticalAlignment="Center"
+                     BorderThickness="0"
+                     Padding="0 10"
+                    PreviewKeyDown="MessageText_PreviewKeyDown"
+                    AcceptsReturn="True"
+                     AcceptsTab="True"
+                     VerticalScrollBarVisibility="Auto"
+                     />
+
+          
+            <StackPanel Grid.Column="2"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Top"
+                        Margin="0 0 8 0"
+                        >
+
+        
+                <Button Style="{StaticResource IconGrowButton}"
+                      
+                    Height="{Binding MinHeight, RelativeSource={RelativeSource AncestorType=Grid}}"
+                   
+                    Content="{StaticResource FontAwesomeEmojiIcon}"
+                    Foreground="{StaticResource WordOrangeBrush}"
+                    />
+
+              
+                <Button Content="Send"
+                        
+                        Padding="8"
+                        Focusable="False"
+                        Command="{Binding SendCommand}"
+                        Background="{StaticResource WordGreenBrush}"
+                        FontSize="{StaticResource FontSizeRegular}"
+                      
+                        />
+
+            </StackPanel>
+
+        </Grid>
+
+
+
+
     </Grid>
 </local:BasePage>

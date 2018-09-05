@@ -12,6 +12,7 @@ namespace KojangTalk
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+        
             if (parameter == null)
             {
                

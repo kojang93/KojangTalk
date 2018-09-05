@@ -9,7 +9,7 @@ namespace KojangTalk
 {
 
     public abstract class BaseAttachedProperty<Parent, Property>
-        where Parent : BaseAttachedProperty<Parent, Property>, new()
+        where Parent : new()
 
     {
         #region Public Events
@@ -32,7 +32,9 @@ namespace KojangTalk
         #region Attached Property Definitions
 
        // Value 에 의존하는 의존속성 ValueProperty 정의 
-        public static readonly DependencyProperty ValueProperty = DependencyProperty.RegisterAttached("Value", typeof(Property), typeof(BaseAttachedProperty<Parent, Property>),
+        public static readonly DependencyProperty ValueProperty = DependencyProperty.RegisterAttached("Value", 
+            typeof(Property), 
+            typeof(BaseAttachedProperty<Parent, Property>),
        new UIPropertyMetadata(
            default(Property),
            new PropertyChangedCallback(OnValuePropertyChanged),
@@ -48,18 +50,17 @@ namespace KojangTalk
         private static void OnValuePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) //프로퍼티 변화가 일어났을때 자식놈의 instance 함수 호추 
             // DependencyObject d는 Attached Property를 부여받은 객체라고 할수 있다. 
         {
-            Console.WriteLine("띠용" + d);
-            Console.WriteLine("호출");
-            Instance.OnValueChanged(d, e);
-            Instance.ValueChanged(d, e);
+           
+            (Instance as BaseAttachedProperty<Parent, Property>)?.OnValueChanged(d, e);
+            (Instance as BaseAttachedProperty<Parent, Property>)?.ValueChanged(d, e);
         }
 
 
         private static object OnValuePropertyUpdated(DependencyObject d, object value) //프로퍼티 변화가 일어났을때 자식놈의 instance 함수 호추 ㄹ
         {
-          
-            Instance.OnValueUpdated(d, value);
-            Instance.ValueUpdated(d, value);
+
+            (Instance as BaseAttachedProperty<Parent, Property>)?.OnValueUpdated(d, value);
+            (Instance as BaseAttachedProperty<Parent, Property>)?.ValueUpdated(d, value);
 
             return value;
         }

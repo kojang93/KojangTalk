@@ -1,18 +1,13 @@
 ﻿
 using KojangTalk.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows;
-using System.Windows.Data;
+
 using System.Windows.Input;
 
 namespace KojangTalk
 {
-    class WindowViewModel : BaseViewModel
+    public class WindowViewModel : BaseViewModel
     {
 
         #region Private Member
@@ -46,10 +41,10 @@ namespace KojangTalk
         #region Public Properties
 
         public double WindowMinimumWidth { get; set; } = 800;    //창의 최소 너비 정의 
-        public double WindowMaximumHeight { get; set; } = 400;    //창의 최대 높이 정의 
+        public double WindowMinimumHeight { get; set; } = 400;    //창의 최대 높이 정의 
 
         public string Test { get; set; } = "My string";
-        public int ResizeBorder { get; set; } = 6;
+        public int ResizeBorder { get; set; } = 10;
   
 
         public bool Borderless { get { return (mWindow.WindowState == WindowState.Maximized || mDockPosition != WindowDockPosition.Undocked); } }
@@ -100,9 +95,18 @@ namespace KojangTalk
 
         public GridLength TitleHeightGridLength {  get { return new GridLength(TitleHeight + ResizeBorder);  } }
 
+
+        public bool DimmableOverlayVisible { get; set; }
+
+        public bool SettingsMenuVisible {
+            // IoC 컨테이너에서 bool값 가져옴
+
+            get => IoC.Get<Core.ApplicationViewModel>().SettingsMenuVisible;
+            set => IoC.Get<ApplicationViewModel> ().SettingsMenuVisible = value;
+
+        }
+
         #endregion
-
-
 
 
         #region Constructor

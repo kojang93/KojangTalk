@@ -13,20 +13,20 @@ namespace KojangTalk
         where T: class, new()
     {
 
-        #region Private Members
-        private static T mConverter = null;
-        #endregion
+      
+        private static T Converter = null;
+      
 
 
         public override object ProvideValue(IServiceProvider serviceProvicer)
         {   
-            return mConverter ?? (mConverter = new T());
+            return Converter ?? (Converter = new T());
         }
 
-        #region Converter Methods
+      
         public abstract object Convert(object value, Type targetType, object parameter, CultureInfo culture);
 
         public abstract object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture);
-        #endregion
+      
     }
 }

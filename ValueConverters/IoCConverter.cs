@@ -17,16 +17,16 @@ namespace KojangTalk
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-           switch ((string)value)
-            {
-                case nameof(ApplicationViewModel):
-                    return IoC.Kernel.Get<ApplicationViewModel>();
+           //switch ((string)value)
+           // {
+           //     case nameof(ApplicationViewModel):
+           //         return IoC.Kernel.Application;
 
                     
-                default:
-                    Debugger.Break();
+           //     default:
+           //         Debugger.Break();
                     return null;
-            }
+            //}
         }
 
         public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

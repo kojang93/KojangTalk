@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\obj\Debug\
+C:\Users\kojang\documents\visual studio 2017\Projects\KojangTalk\KojangTalk\obj\Debug\
 KojangTalk
 none
 false
 DEBUG;TRACE
-C:\Users\kojang\Documents\Visual Studio 2017\Projects\KojangTalk\KojangTalk\App.xaml
-12-1119151744
+C:\Users\kojang\documents\visual studio 2017\Projects\KojangTalk\KojangTalk\App.xaml
+231963271235
 
-301357280611
-19-773816863
-Controls\Chat\ChatListControl.xaml;Controls\Chat\ChatListItemControl.xaml;Controls\SideMenuControl.xaml;MainWindow.xaml;Pages\ChatPage.xaml;Pages\RegisterPage.xaml;Pages\LoginPage.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\Windows.xaml;Styles\Texts.xaml;Styles\Fonts.xaml;
+65-960065108
+19-621970528
+Controls\BubbleContent.xaml;Controls\Chat\ChatMessage\ChatMessageListItemControl.xaml;Controls\Chat\ChatMessage\ChatMessageListControl.xaml;Controls\Chat\ChatList\ChatListControl.xaml;Controls\Chat\ChatList\ChatListItemControl.xaml;Controls\Input\PasswordEntryControl.xaml;Controls\Input\TextEntryControl.xaml;Controls\Menu\VerticalMenu.xaml;Controls\PageHost.xaml;Controls\SettingsControl.xaml;Controls\SideMenuControl.xaml;Dialogs\DialogMessageBox.xaml;DialogWindow.xaml;MainWindow.xaml;Pages\ChatPage.xaml;Pages\RegisterPage.xaml;Pages\LoginPage.xaml;Styles\Buttons.xaml;Styles\Scroll.xaml;Styles\Colors.xaml;Styles\Windows.xaml;Styles\Texts.xaml;Styles\Fonts.xaml;
 
-False
+True
 

@@ -14,12 +14,12 @@
       mc:Ignorable="d" 
       x:Name="Page"
       d:DesignHeight="700" d:DesignWidth="700"
-      Title="LoginPage">
+      >
 
     <!--프로젝트 참조할때는 참조 추가해주어야함-->
 
     <Border Background="{StaticResource BackgroundGreenLightBrush}">
-
+            
         <Grid>
 
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
@@ -35,13 +35,13 @@
 
                         <StackPanel>
                             <TextBlock Text="Sign In"
-                                        FontSize="{StaticResource FontSizeLarge}"
+                                        FontSize="{StaticResource FontSizeXXLarge}"
                                        FontFamily="{StaticResource LatoRegular}"
                                        Foreground="{StaticResource WordBlueBrush}"/>
 
 
                             <TextBlock Text="It's about to get fun"
-                                       FontSize="{StaticResource FontSizeRegular}"
+                                       FontSize="{StaticResource FontSizeLarge}"
                                        Foreground="{StaticResource ForegroundDarkBrush}"/>
 
                             <!--이메일-->
@@ -51,6 +51,7 @@
                             <PasswordBox Name="PasswordText"  Tag="Password" Margin="0 0 0 30"/>
 
                             <Button Content="Login" 
+                                    IsDefault="True"
                                     local:IsBusyProperty.Value="{Binding LoginIsRunning}"
                                     Command="{Binding LoginCommand}"
                                     CommandParameter="{Binding ElementName=Page}" 

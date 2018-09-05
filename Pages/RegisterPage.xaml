@@ -1,4 +1,4 @@
-﻿<local:BasePage x:TypeArguments="core:LoginViewModel" x:Class="KojangTalk.RegisterPage"
+﻿<local:BasePage x:TypeArguments="core:RegisterViewModel" x:Class="KojangTalk.RegisterPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -11,7 +11,7 @@
       mc:Ignorable="d" 
       x:Name="Page"
       d:DesignHeight="700" d:DesignWidth="700"
-      Title="Register">
+      >
 
 
 
@@ -32,24 +32,27 @@
 
                         <StackPanel>
                             <TextBlock Text="Sign Up"
-                                        FontSize="{StaticResource FontSizeLarge}"
+                                        FontSize="{StaticResource FontSizeXXLarge}"
                                        FontFamily="{StaticResource LatoRegular}"
                                        Foreground="{StaticResource WordBlueBrush}"/>
 
 
                             <TextBlock Text="It's about to get fun"
-                                       FontSize="{StaticResource FontSizeRegular}"
+                                       FontSize="{StaticResource FontSizeLarge}"
                                        Foreground="{StaticResource ForegroundDarkBrush}"/>
 
                             <!--이메일-->
-                            <TextBox Text="{Binding Email}" Style="{StaticResource TextBoxBase}" Tag="Email"/>
+                            <TextBox Text="{Binding Email}" 
+                                     Style="{StaticResource TextBoxBase}" Tag="Email"
+                                     local:IsFocusedProperty.Value="True"/>
 
                             <!--비밀번호-->
                             <PasswordBox Name="PasswordText"  Tag="Password" Margin="0 0 0 30"/>
 
                             <Button Content="Register" 
-                                    local:IsBusyProperty.Value="{Binding LoginIsRunning}"
-                                    Command="{Binding LoginCommand}"
+                                    IsDefault="True"
+                                    local:IsBusyProperty.Value="{Binding RegisterIsRunning}"
+                                    Command="{Binding RegisterCommand}"
                                     CommandParameter="{Binding ElementName=Page}" 
                                     HorizontalAlignment="Center" />
 
@@ -59,7 +62,11 @@
 
 
                     </Border>
-                    <Button Style ="{StaticResource TextButton}" Content="Or, I already have an account..." HorizontalAlignment="Center"/>
+                    <Button Style ="{StaticResource TextButton}" 
+                            Content="Or, I already have an account..." 
+                            HorizontalAlignment="Center"
+                            Command="{Binding LoginCommand}"
+                            />
 
 
                 </StackPanel>
